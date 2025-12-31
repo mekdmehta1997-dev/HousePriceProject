@@ -1,0 +1,30 @@
+name: ML Training Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Training Image
+      run: |
+        docker build -t house-price-training ./training
+
+    - name: Run Training
+      env:
+        MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_URI }}
+      run: |
+        docker run \
+          -e MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI \
+          house-price-training
