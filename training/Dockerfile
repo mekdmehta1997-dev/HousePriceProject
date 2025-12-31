@@ -7,6 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-COPY data /app/data
-
 CMD ["python", "train.py"]
