@@ -1,5 +1,3 @@
 pandas
-numpy
 scikit-learn
-mlflow==2.14.1
-xgboost==2.0.3
+mlflow
