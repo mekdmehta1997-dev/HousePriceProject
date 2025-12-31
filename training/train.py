@@ -74,7 +74,7 @@ print("MSE:", mse)
 print("R2 :", r2)
 
 # ================= MLflow =================
-mlflow.set_tracking_uri("http://host.docker.internal:5001")
+##mlflow.set_tracking_uri("http://host.docker.internal:5001")
 mlflow.set_experiment("house-price-prediction")
 
 with mlflow.start_run():
@@ -84,3 +84,4 @@ with mlflow.start_run():
 
 
 print("Training Completed Successfully!")
+
